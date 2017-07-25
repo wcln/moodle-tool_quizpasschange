@@ -58,14 +58,24 @@ function tool_quizpasschange_get_courses() {
  * @param $password
  * @return void
  */
-function tool_quizpasschange_set_quiz_passwords($course, $password) {
+function tool_quizpasschange_set_quiz_passwords($course, $password, $updateblank = false) {
     global $DB;
 
     // update in database
     $params = array(2);
     $params[0] = $password;
     $params[1] = $course;
-    $DB->execute('UPDATE mdl_quiz, mdl_course SET password=? WHERE mdl_course.fullname=? AND mdl_course.id=mdl_quiz.course AND password<>"" AND password IS NOT NULL', $params);
+    $sql = 'UPDATE mdl_quiz, mdl_course 
+            SET password=? 
+            WHERE mdl_course.fullname=? 
+            AND mdl_course.id=mdl_quiz.course';
+
+    // check if blank passwords should NOT be updated
+    if (!updateBlank) {
+        $sql .= ' AND password<>"" AND password IS NOT NULL';
+    }
+
+    $DB->execute($sql, $params);
 }
 
 /**

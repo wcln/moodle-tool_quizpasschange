@@ -59,7 +59,7 @@ if ($fromform = $mform->get_data()) {
 	$course = tool_quizpasschange_get_course_string($fromform->course);
 	$password = $fromform->password;
 	tool_quizpasschange_set_quiz_passwords($course, $password);
-	echo "<img src=\"images/checkmark.png\">Password updated for $course to '$password'!";
+	echo "<p><img src=\"images/checkmark.png\">Password updated for $course to '$password'!</p>";
 
 	$mform->display();
 
