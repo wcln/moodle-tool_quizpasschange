@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Strings for component 'tool_generator', language 'en'.
+ * Quiz Password Change Admin Tool
  *
  * @package    tool_quizpasschange
  * @copyright  2017 Colin Bernard {@link http://bclearningnetwork.com}
