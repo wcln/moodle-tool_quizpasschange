@@ -51,11 +51,15 @@ class passchange_form extends moodleform {
 
         $mform->addElement('select', 'course', get_string('courseselect', 'tool_quizpasschange'), $courses);
         $mform->setType('course', PARAM_RAW);
+        $mform->addRule('course', get_string('required'), 'required', null);
 
         $mform->addElement('text', 'password', get_string('passwordtext', 'tool_quizpasschange'));
         $mform->setType('password', PARAM_NOTAGS);
 
-        $mform->addRule('course', get_string('required'), 'required', null);
+        $mform->addElement('checkbox', 'updateblank', get_string('updateblank', 'tool_quizpasschange'), get_string('enable', 'tool_quizpasschange'));
+        $mform->setType('updateblank', PARAM_BOOL);
+        $mform->addHelpButton('updateblank', 'updateblank', 'tool_quizpasschange');
+        
 
         $this->add_action_buttons(false, get_string('submit', 'tool_quizpasschange'));
     }
