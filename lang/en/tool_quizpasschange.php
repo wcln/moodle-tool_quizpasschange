@@ -23,9 +23,11 @@
  */
 
 $string['pluginname'] = 'Quiz Password Change';
-$string['heading'] = 'Quiz Password Change by Course';
-$string['quizpasschangeintro'] = 'This script will update quiz (and test) passwords by course. If a password is blank it will not be changed.';
+$string['heading'] = 'Quiz Password Change';
+$string['quizpasschangeintro'] = 'This script will update quiz passwords by course.';
 $string['submit'] = 'Apply Password';
 $string['courseselect'] = 'Select a course';
 $string['passwordtext'] = "Password";
-
+$string['updateblank'] = 'Update blank passwords';
+$string['updateblank_help'] = 'You may want to leave this disabled if some quiz passwords should be blank. Otherwise if it is checked, ALL quiz passwords in the course will be updated, even if they are currently blank.';
+$string['enable'] = 'Enable';
