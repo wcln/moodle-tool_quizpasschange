@@ -71,7 +71,7 @@ function tool_quizpasschange_set_quiz_passwords($course, $password, $updateblank
             AND mdl_course.id=mdl_quiz.course';
 
     // check if blank passwords should NOT be updated
-    if (!updateBlank) {
+    if (!$updateblank) {
         $sql .= ' AND password<>"" AND password IS NOT NULL';
     }
 

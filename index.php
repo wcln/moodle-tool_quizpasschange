@@ -58,7 +58,14 @@ if ($fromform = $mform->get_data()) {
 	// $mform->get_data() returns data posted in form
 	$course = tool_quizpasschange_get_course_string($fromform->course);
 	$password = $fromform->password;
-	tool_quizpasschange_set_quiz_passwords($course, $password);
+
+	// check if update blank passwords checkbox was marked
+	if (property_exists($fromform, "updateblank")) {
+		tool_quizpasschange_set_quiz_passwords($course, $password, true);
+	} else {
+		tool_quizpasschange_set_quiz_passwords($course, $password);
+	}
+
 	echo "<p><img src=\"images/checkmark.png\">Password updated for $course to '$password'!</p>";
 
 	$mform->display();
