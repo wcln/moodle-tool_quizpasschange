@@ -15,19 +15,18 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Strings for component 'tool_generator', language 'en'.
+ * Creates link to Quiz Password Change tool in admin tree.
  *
  * @package    tool_quizpasschange
  * @copyright  2017 Colin Bernard {@link http://bclearningnetwork.com}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['pluginname'] = 'Quiz Password Change';
-$string['heading'] = 'Quiz Password Change';
-$string['quizpasschangeintro'] = 'This script will update quiz passwords by course.';
-$string['submit'] = 'Apply Password';
-$string['courseselect'] = 'Select a course';
-$string['passwordtext'] = "Password";
-$string['updateblank'] = 'Update blank passwords';
-$string['updateblank_help'] = 'You may want to leave this disabled if some quiz passwords should be blank. Otherwise if it is checked, ALL quiz passwords in the course will be updated, even if they are currently blank.';
-$string['enable'] = 'Enable';
+defined('MOODLE_INTERNAL') || die();
+
+if ($hassiteconfig) {
+    // Link to Quiz Password Change tool.
+    $ADMIN->add('tools', new admin_externalpage('quizpasschange',
+        get_string('pluginname', 'tool_quizpasschange'), "$CFG->wwwroot/$CFG->admin/tool/quizpasschange/index.php"));
+
+}

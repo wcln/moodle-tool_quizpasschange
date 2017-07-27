@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Strings for component 'tool_generator', language 'en'.
+ * Quiz Password Change Admin Tool
  *
  * @package    tool_quizpasschange
  * @copyright  2017 Colin Bernard {@link http://bclearningnetwork.com}
@@ -58,8 +58,15 @@ if ($fromform = $mform->get_data()) {
 	// $mform->get_data() returns data posted in form
 	$course = tool_quizpasschange_get_course_string($fromform->course);
 	$password = $fromform->password;
-	tool_quizpasschange_set_quiz_passwords($course, $password);
-	echo "<img src=\"images/checkmark.png\">Password updated for $course to '$password'!";
+
+	// check if update blank passwords checkbox was marked
+	if (property_exists($fromform, "updateblank")) {
+		tool_quizpasschange_set_quiz_passwords($course, $password, true);
+	} else {
+		tool_quizpasschange_set_quiz_passwords($course, $password);
+	}
+
+	echo "<p><img src=\"images/checkmark.png\">Password updated for $course to '$password'!</p>";
 
 	$mform->display();
 
