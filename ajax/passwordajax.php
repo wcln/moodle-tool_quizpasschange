@@ -27,19 +27,26 @@
 require_once(__DIR__ . '/../../../../config.php');
 require_once(__DIR__.'/../locallib.php');
 
-if (isset($_POST['course_id'])) {
+// if (isset($_POST['course_id'])) {
 
-	$course_id = $_POST['course_id'];
-	$course = tool_quizpasschange_get_course_string($course_id);
+// 	$course_id = $_POST['course_id'];
+// 	$course = tool_quizpasschange_get_course_string($course_id);
 
-	$params = array(1);
-	$params[0] = $course;
+// 	$params = array(1);
+// 	$params[0] = $course;
 
-	$result = $DB->get_record_sql('SELECT password FROM mdl_course, mdl_quiz WHERE mdl_course.id=mdl_quiz.course AND mdl_course.fullname=? AND password<>"" AND password IS NOT NULL LIMIT 1', $params);
+// 	$result = $DB->get_record_sql('SELECT password FROM mdl_course, mdl_quiz WHERE mdl_course.id=mdl_quiz.course AND mdl_course.fullname=? AND password<>"" AND password IS NOT NULL LIMIT 1', $params);
 
-	echo $result->password;
+// 	echo $result->password;
 
-	exit();
-} 
+// 	exit();
+// } 
+
+// 
+
+
+function quizpasschange_getpassword() {
+	return 5;
+}
 
 ?>
