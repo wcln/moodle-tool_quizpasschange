@@ -45,8 +45,4 @@ require_once(__DIR__.'/../locallib.php');
 // 
 
 
-function quizpasschange_getpassword() {
-	return 5;
-}
-
 ?>

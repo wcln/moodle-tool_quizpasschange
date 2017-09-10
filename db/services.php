@@ -7,7 +7,9 @@ $functions = array(
 
     'tool_quizpasschange_get_quiz_password' => array(//web service function name
 
-        'classname' => 'quizpasschange\external\ajax', //class containing the external function
+        'classname' => 'tool_quizpasschange_external', //class containing the external function
+
+        'classpath' => 'tool/quizpasschange/externallib.php',
 
         'methodname' => 'get_quiz_password', //external function name
 

@@ -26,23 +26,46 @@
  * Performs an AJAX call to set a text field to a course password when a course is selected.
  *
  */
-require(['core/ajax'], function(ajax) {
-	select = document.getElementById("id_course");
+// require(['core/ajax'], function(ajax) {
+// 	select = document.getElementById("id_course");
 
-	select.onchange = function() {
-		var course = select.options[select.selectedIndex].value;
+// 	select.onchange = function() {
+// 		var course = select.options[select.selectedIndex].value;
 
-		var promises = ajax.call([
-			{ methodname: 'tool_quizpasschange_get_quiz_password', args: { course_id: course} }
-		]);
+// 		var promises = ajax.call([
+// 			{ methodname: 'tool_quizpasschange_get_quiz_password'}
+// 		]);
 
-		promises[0].done(function(response) {
-			console.log(response);
-		}).fail(function(ex) {
-			console.log(ex);
-		});
+// 		promises[0].done(function(response) {
+// 			console.log(response);
+// 			console.log('success');
+// 		}).fail(function(ex) {
+// 			console.log(ex);
+// 		});
+// 	}
+// });
+
+require(['core/ajax'],
+
+	function(ajax) {
+		select = document.getElementById('id_course');
+
+		select.onchange = function() {
+			var promises = ajax.call([
+				{
+					methodname: 'get_quiz_password'
+				}
+			]);
+
+			promises[0].done(function(response) {
+				console.log('done');
+			});
+
+			console.log('nice');
+		}
 	}
-});
+
+);
 
 
 
