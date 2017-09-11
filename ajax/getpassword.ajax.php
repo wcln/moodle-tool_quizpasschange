@@ -46,7 +46,8 @@ if (has_capability('moodle/site:config', $coursecontext)) {
 	$params = array(1);
 	$params[0] = $course;
 
-	$result = $DB->get_record_sql('SELECT password FROM mdl_course, mdl_quiz WHERE mdl_course.id=mdl_quiz.course AND mdl_course.fullname=? AND password<>"" AND password IS NOT NULL LIMIT 1', $params);
+
+	$result = $DB->get_record_sql('SELECT password FROM {course}, {quiz} WHERE {course}.id={quiz}.course AND {course}.fullname=? AND password<>"" AND password IS NOT NULL LIMIT 1', $params);
 
 	$outcome->success = true;
 	$outcome->response = $result->password;
