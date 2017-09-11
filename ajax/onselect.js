@@ -26,66 +26,20 @@
  * Performs an AJAX call to set a text field to a course password when a course is selected.
  *
  */
-// require(['core/ajax'], function(ajax) {
-// 	select = document.getElementById("id_course");
+require(['jquery'], function($) {
+	select = document.getElementById("id_course");
 
-// 	select.onchange = function() {
-// 		var course = select.options[select.selectedIndex].value;
-
-// 		var promises = ajax.call([
-// 			{ methodname: 'tool_quizpasschange_get_quiz_password'}
-// 		]);
-
-// 		promises[0].done(function(response) {
-// 			console.log(response);
-// 			console.log('success');
-// 		}).fail(function(ex) {
-// 			console.log(ex);
-// 		});
-// 	}
-// });
-
-require(['core/ajax', 'core/log', 'core/notification', 'core/templates', 'core/config'],
-
-	function(ajax, log, notification, templates, config) {
-		select = document.getElementById('id_course');
-
-		select.onchange = function() {
-			var promises = ajax.call([
-				{
-					methodname: 'get_quiz_password',
-					args: {component: 'tool_quizpasschange', course_id: 4}
-				}
-			]);
-
-			promises[0].done(function(response) {
-				console.log('IT WORKED');
-			}).fail(notification.ex);
-
-			console.log('nice');
-		}
-	}
-
-);
-
-
-
-
-
-// require(['jquery'], function($) {
-// 	select = document.getElementById("id_course");
-
-// 	select.onchange = function() {
+	select.onchange = function() {
 		
-// 		var course = select.options[select.selectedIndex].value;
+		var course = select.options[select.selectedIndex].value;
 
-// 		$.ajax({
-// 			url: "ajax/passwordajax.php",
-// 			method: "POST",
-// 			data: {course_id: course}
-// 		}).done(function(response) {
-// 			document.getElementById("id_password").value = response;
-// 		});
-// 	}
-// });
+		$.ajax({
+			url: "ajax/getpassword.ajax.php",
+			method: "POST",
+			data: {course_id: course}
+		}).done(function(response) {
+			document.getElementById("id_password").value = response['response'];
+		});
+	}
+});
 
