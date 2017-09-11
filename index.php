@@ -49,32 +49,34 @@ echo $OUTPUT->heading(get_string('heading', 'tool_quizpasschange'));
 $info = format_text(get_string('quizpasschangeintro', 'tool_quizpasschange'), FORMAT_MARKDOWN);
 echo $OUTPUT->box($info);
 
-
+$success_output = $PAGE->get_renderer('tool_quizpasschange');
 
 $mform = new passchange_form();
 
 if ($fromform = $mform->get_data()) {
-	// process validated data
+	// Process validated data
 	// $mform->get_data() returns data posted in form
 	$course = tool_quizpasschange_get_course_string($fromform->course);
 	$password = $fromform->password;
 
-	// check if update blank passwords checkbox was marked
+	// Check if update blank passwords checkbox was marked
 	if (property_exists($fromform, "updateblank")) {
 		tool_quizpasschange_set_quiz_passwords($course, $password, true);
 	} else {
 		tool_quizpasschange_set_quiz_passwords($course, $password);
 	}
 
-	echo "<p><img src=\"images/checkmark.png\">Password updated for $course to '$password'!</p>";
+	// Render success message HTML
+	$renderable = new \tool_quizpasschange\output\success_html(get_string('success', 'tool_quizpasschange'), $password, $course, get_string('to', 'tool_quizpasschange'));
+	echo $success_output->render($renderable);
 
 	$mform->display();
 
 } else {
-	// this branch is executed if the form is submitted but the data doesn't validate and the form should be redisplayed
+	// This branch is executed if the form is submitted but the data doesn't validate and the form should be redisplayed
 	// or on the first display of the form
 
-	// display the form
+	// Display the form
 	$mform->display();
 }
 

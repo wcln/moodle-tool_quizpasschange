@@ -31,3 +31,5 @@ $string['passwordtext'] = "Password";
 $string['updateblank'] = 'Update blank passwords';
 $string['updateblank_help'] = 'You may want to leave this disabled if some quiz passwords should be blank. Otherwise if it is checked, ALL quiz passwords in the course will be updated, even if they are currently blank.';
 $string['enable'] = 'Enable';
+$string['success'] = "Password updated for course ";
+$string['to'] = "to";
