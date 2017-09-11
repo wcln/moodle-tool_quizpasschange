@@ -45,21 +45,22 @@
 // 	}
 // });
 
-require(['core/ajax'],
+require(['core/ajax', 'core/log', 'core/notification', 'core/templates', 'core/config'],
 
-	function(ajax) {
+	function(ajax, log, notification, templates, config) {
 		select = document.getElementById('id_course');
 
 		select.onchange = function() {
 			var promises = ajax.call([
 				{
-					methodname: 'get_quiz_password'
+					methodname: 'get_quiz_password',
+					args: {component: 'tool_quizpasschange', course_id: 4}
 				}
 			]);
 
 			promises[0].done(function(response) {
-				console.log('done');
-			});
+				console.log('IT WORKED');
+			}).fail(notification.ex);
 
 			console.log('nice');
 		}

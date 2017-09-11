@@ -1,8 +1,5 @@
 <?php
 
-defined('MOODLE_INTERNAL') || die();
-
-
 $functions = array(
 
     'tool_quizpasschange_get_quiz_password' => array(//web service function name
@@ -19,10 +16,16 @@ $functions = array(
 
         'ajax' => true
 
-    ),
-
+    )
 );
 
+$services = array(
+		'Quiz Pass Change AJAX' => array(
+			'functions' => array('tool_quizpasschange_get_quiz_password'),
+			'restrictedusers' => 0,
+			'enabled' => 1
+		)
+	);
 
 
 ?>

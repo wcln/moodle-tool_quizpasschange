@@ -9,22 +9,18 @@ class tool_quizpasschange_external extends external_api {
 	 * @return external_function_parameters
 	 */
 	public static function get_quiz_password_parameters() {
-		return new external_single_structure(
+		return new external_function_parameters(
 			array(
-				//'course_id' => new external_value(PARAM_INT, 'id of course')
+				'course_id' => new external_value(PARAM_INT, 'id of course')
 			)
 		);
 	}
 
 	public static function get_quiz_password_returns() {
-		return new external_single_structure(
-			array(
-				//'password' => new external_value(PARAM_RAW, 'quiz password for a course')
-			)
-		);
+		return new external_value(PARAM_RAW, 'quiz password for a course');
 	}
 
-	public static function get_quiz_password() {
-		//return 5; // temp
+	public static function get_quiz_password($course_id) {
+		return "testpassword"; // temp
 	}
 }
