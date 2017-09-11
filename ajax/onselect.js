@@ -34,11 +34,11 @@ require(['jquery'], function($) {
 		var course = select.options[select.selectedIndex].value;
 
 		$.ajax({
-			url: "ajax/passwordajax.php",
+			url: "ajax/getpassword.ajax.php",
 			method: "POST",
 			data: {course_id: course}
 		}).done(function(response) {
-			document.getElementById("id_password").value = response;
+			document.getElementById("id_password").value = response['response'];
 		});
 	}
 });

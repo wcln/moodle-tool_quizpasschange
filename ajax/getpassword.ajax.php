@@ -15,21 +15,32 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Change quiz passwords by course
+ * Process AJAX request
  *
  * @package    tool_quizpasschange
  * @copyright  2017 Colin Bernard {@link http://bclearningnetwork.com}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-//defined('MOODLE_INTERNAL') || die;
+
+if (!defined('AJAX_SCRIPT')) {
+    define('AJAX_SCRIPT', true);
+}
 
 require_once(__DIR__ . '/../../../../config.php');
 require_once(__DIR__.'/../locallib.php');
 
-if (isset($_POST['course_id'])) {
+$course_id = required_param('course_id', PARAM_INT);
 
-	$course_id = $_POST['course_id'];
+require_login();
+
+$outcome = new stdClass;
+$outcome->success = false;
+$outcome->response = new stdClass;
+$outcome->error = '';
+
+$coursecontext = get_context_instance(CONTEXT_COURSE, $COURSE->id);
+if (has_capability('moodle/site:config', $coursecontext)) {
 	$course = tool_quizpasschange_get_course_string($course_id);
 
 	$params = array(1);
@@ -37,9 +48,12 @@ if (isset($_POST['course_id'])) {
 
 	$result = $DB->get_record_sql('SELECT password FROM mdl_course, mdl_quiz WHERE mdl_course.id=mdl_quiz.course AND mdl_course.fullname=? AND password<>"" AND password IS NOT NULL LIMIT 1', $params);
 
-	echo $result->password;
+	$outcome->success = true;
+	$outcome->response = $result->password;
+} else {
+	$outcome->error = 'You do not have access';
+}
 
-	exit();
-} 
+echo json_encode($outcome);
+die;
 
-?>
