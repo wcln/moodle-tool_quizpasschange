@@ -37,10 +37,10 @@ function tool_quizpasschange_get_courses() {
 
     $courses = array();
 
-    $sql = 'SELECT mdl_course.fullname, password 
-            FROM mdl_quiz, mdl_course
-            WHERE mdl_quiz.course=mdl_course.id 
-            GROUP BY mdl_course.fullname';
+    $sql = 'SELECT {course}.fullname
+            FROM {quiz}, {course}
+            WHERE {quiz}.course={course}.id 
+            GROUP BY {course}.fullname';
 
     $rows = $DB->get_records_sql($sql);
 
@@ -65,10 +65,10 @@ function tool_quizpasschange_set_quiz_passwords($course, $password, $updateblank
     $params = array(2);
     $params[0] = $password;
     $params[1] = $course;
-    $sql = 'UPDATE mdl_quiz, mdl_course 
+    $sql = 'UPDATE {quiz}, {course} 
             SET password=? 
-            WHERE mdl_course.fullname=? 
-            AND mdl_course.id=mdl_quiz.course';
+            WHERE {course}.fullname=? 
+            AND {course}.id={quiz}.course';
 
     // check if blank passwords should NOT be updated
     if (!$updateblank) {
