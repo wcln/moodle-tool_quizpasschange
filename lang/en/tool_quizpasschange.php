@@ -23,7 +23,7 @@
  */
 
 $string['pluginname'] = 'Quiz Password Change';
-$string['heading'] = 'Quiz Password Change';
+$string['heading'] = 'BCLN Quiz Password Change';
 $string['quizpasschangeintro'] = 'This script will update quiz passwords by course.';
 $string['submit'] = 'Apply Password';
 $string['courseselect'] = 'Select a course';
