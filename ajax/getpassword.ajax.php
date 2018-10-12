@@ -57,4 +57,3 @@ if (has_capability('moodle/site:config', $coursecontext)) {
 
 echo json_encode($outcome);
 die;
-
