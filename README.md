@@ -1,4 +1,4 @@
-# moodle-tool-quizpasschange
+# moodle-tool_quizpasschange
 Moodle Admin Tool
   
 Allows admins to change quiz passwords by course.  
