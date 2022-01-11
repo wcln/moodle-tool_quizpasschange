@@ -6,4 +6,4 @@ There is an option to leave blank passwords blank (but update all others). This 
   
 Installs to Site administration->Plugins->Admin Tools.
   
-Developed for [Western Canadian Learning Network](https://wcln.ca) by Colin Bernard.
+Developed for [Western Canadian Learning Network](https://wcln.ca) by Colin Perepelken.
